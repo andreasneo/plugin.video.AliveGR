@@ -410,7 +410,7 @@ class Indexer:
         html = net_client().http_GET(url).content
         image = parseDOM(html, 'img', attrs={'class': 'thumbnail.*?'}, ret='src')[0]
         image = urljoin(GM_BASE, image)
-        year = parseDOM(html, 'h4', attrs={'style': 'text-indent:10px;'})[0]
+        year = parseDOM(html, 'h4', attrs={'style': 'padding-left:10px;'})[0]
         year = int(re.search(r'(\d{4})', year).group(1))
         name = parseDOM(html, 'h2')[0]
 
@@ -423,7 +423,7 @@ class Indexer:
         else:
             plot = control.lang(30085)
 
-        info = parseDOM(html, 'h4', attrs={'style': 'text-indent:10px;'})
+        info = parseDOM(html, 'h4', attrs={'style': 'padding-left:10px;'})
         genre = info[1].lstrip(u'Είδος:').strip()
 
         dictionary = {
@@ -696,7 +696,7 @@ def gm_source_maker(url):
 
         try:
 
-            info = parseDOM(html, 'h4', attrs={'style': 'text-indent:10px;'})
+            info = parseDOM(html, 'h4', attrs={'style': 'padding-left:10px;'})
 
             if ',' in info[1]:
 
